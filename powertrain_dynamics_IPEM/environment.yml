@@ -1,0 +1,19 @@
+name: powertrain_dynamics
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - jupyterlab
+  - nodejs
+  - widgetsnbextension
+  - ipywidgets
+  - numpy
+  - pandas
+  - matplotlib
+  - ipympl
+#  - k3d
+#  - ipyvolume
+prefix: /home/dominic/miniconda3/envs/powertrain_dynamics
+
+

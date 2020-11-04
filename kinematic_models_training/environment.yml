@@ -1,0 +1,20 @@
+name: kinematic_model_training
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - jupyterlab
+  - nodejs
+  - widgetsnbextension
+  - ipywidgets
+  - numpy
+  - pandas
+  - matplotlib
+  - ipympl
+  - scipy
+#  - k3d
+#  - ipyvolume
+prefix: /home/dominic/miniconda3/envs/kinematic_model_training
+
+
