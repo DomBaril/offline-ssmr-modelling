@@ -6,7 +6,10 @@ import matplotlib.pyplot as plt
 def powerTrain_vel(tau_c, tau_d, cmd_vel, model_vel, index, dt):
 
     if cmd_vel[index] > -13 and cmd_vel[index] < 13:
-        cmd_delay_index = int(index - tau_d / dt)
+        if tau_d < 0.000001:
+            cmd_delay_index = index
+        else:
+            cmd_delay_index = int(index - tau_d / dt)
         new_vel = model_vel[index] + (1 / tau_c) * (cmd_vel[cmd_delay_index] - model_vel[index]) * dt
     
     elif cmd_vel[index] <= -13:

@@ -21,7 +21,11 @@ def central_diff(f_over, f_under, d):
     
     return (f_over - f_under) / (2 * d)
 
-
+def forward_diff(f_over, f, d):
+    
+    return np.divide(f_over - f, d)
+    
+    
 def quaternion_to_euler(w, x, y, z):
     sinr_cosp = 2 * (w * x + y * z)
     cosr_cosp = 1 - 2 * (x**2 + y**2)
@@ -38,14 +42,6 @@ def quaternion_to_euler(w, x, y, z):
 
     return roll, pitch, yaw
 
-def comp_disp(x_fut, x_pres):
-    x_disp = x_fut - x_pres
-    return np.linalg.norm(x_disp)
-
-def disp_err(x_pred, x):
-    x_err = x_pred - x
-    return x_err @ x_err
-
 def wrap2pi(angle):
     if angle <= np.pi and angle >= -np.pi:
         return(angle)
@@ -53,6 +49,15 @@ def wrap2pi(angle):
         return(wrap2pi(angle + 2*np.pi))
     else:
         return(wrap2pi(angle - 2*np.pi))
+    
+def comp_disp(x_fut, x_pres):
+    x_disp = x_fut - x_pres
+    return np.linalg.norm(x_disp)
+
+def disp_err(x_pred, x):
+    x_err = x_pred - x
+    x[2] = wrap2pi(x[2])
+    return x_err @ x_err
     
 def up_propa_mat(mat, ang):
     propa_cos = np.cos(ang)
@@ -63,3 +68,4 @@ def up_propa_mat(mat, ang):
     mat[1,1] = propa_cos
     
     return mat
+
